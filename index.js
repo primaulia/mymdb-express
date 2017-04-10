@@ -6,8 +6,14 @@ var port = process.env.PORT || 4000
 // mongoose setup
 var dbURI = 'mongodb://localhost/mymdb'
 var mongoose = require('mongoose')
-mongoose.connect(dbURI, function () {
-  console.log('db is connected')
+mongoose.connect(dbURI)
+
+// check if our connection is okay
+var db = mongoose.connection
+db.on('error', console.error.bind(console, 'connection error:'))
+db.once('open', function () {
+  // we're connected!
+  console.log('really really connected')
 })
 
 // setup body parser
