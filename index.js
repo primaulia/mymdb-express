@@ -4,7 +4,7 @@ var app = express()
 var port = process.env.PORT || 4000
 
 // mongoose setup
-var dbURI = 'mongodb://localhost/mymdb'
+var dbURI = 'mongodb://admin:admin@ds041613.mlab.com:41613/mymdb-wdi'
 var mongoose = require('mongoose')
 mongoose.connect(dbURI)
 
