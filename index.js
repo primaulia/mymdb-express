@@ -21,8 +21,11 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
-  res.send('homepage')
+  res.render('')
 })
+
+// setup the ejs template
+app.set('view engine', 'ejs')
 
 // require the movies_controller
 var moviesController = require('./controllers/movies_controller')
