@@ -14,6 +14,10 @@ mongoose.connect(dbURI, function () {
 var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
+app.get('/', function (req, res) {
+  res.send('homepage')
+})
+
 // require the movies_controller
 var moviesController = require('./controllers/movies_controller')
 app.use(moviesController)
