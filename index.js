@@ -27,6 +27,10 @@ app.get('/', function (req, res) {
 // setup the ejs template
 app.set('view engine', 'ejs')
 
+// setup the method override
+var methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
 // require the movies_controller
 var moviesController = require('./controllers/movies_controller')
 app.use(moviesController)
