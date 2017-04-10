@@ -18,6 +18,13 @@ db.once('open', function () {
 
 // setup body parser
 var bodyParser = require('body-parser')
+
+// transform form data to req.body
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+
+// transform json data to req.body
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {

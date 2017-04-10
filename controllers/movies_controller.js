@@ -40,11 +40,17 @@ router.route('/movies/:id')
 .get(function (req, res) {
   res.send('individual movie details on id ' + req.params.id)
 })
-.put(function (req, res) {
-  res.send('update movie details on id ' + req.params.id)
+.put(function (req, res, next) {
+  Movie.findByIdAndUpdate(req.params.id, req.body.movies, function (err, updatedData) {
+    if (err) next()
+    res.redirect('/movies')
+  })
 })
-.delete(function (req, res) {
-  res.send('delete movie on id ' + req.params.id)
+.delete(function (req, res, next) {
+  Movie.findByIdAndRemove(req.params.id, function (err, removedData) {
+    if (err) next()
+    res.send('movie deleted')
+  })
 })
 .post(function (req, res) {
   res.send('not here')
